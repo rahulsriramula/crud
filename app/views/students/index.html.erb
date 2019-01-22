@@ -1,0 +1,38 @@
+<h1>Hello It is my first index</h1>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;    
+    background-color: #f1f1c1;
+}
+</style>
+<table style="width:100%">
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>Place of Birth</th>
+<th>Address</th>
+<th>Phone Number</th>
+</tr>
+<% @students.each do |student| %>
+ <tr>
+ <td><%= student.name %></td>
+ <td><%= student.age %></td>
+ <td><%= student.place_of_birth %></td>
+ <td><%= student.address %></td>
+ <td><%= student.phone_number %></td>
+ <td><%= link_to 'show', student_path(student) %></td>
+ <td><%= link_to 'edit', edit_student_path(student) %></td>
+ <td><%= link_to 'destroy', student_path(student),
+         :method => :delete, data: { clear: 'Are you sure?' } %></td>
+ </tr>
+ <% end %>
+ </table>
+<%= link_to 'New student', new_student_path %>

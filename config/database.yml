@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: root
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: crud_development
+
+test:
+  <<: *default
+  database: crud_test
+
+production:
+  <<: *default
+  database: crud_production
+  username: crud
+  password: <%= ENV['CRUD_DATABASE_PASSWORD'] %>
